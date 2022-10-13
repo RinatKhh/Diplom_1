@@ -12,10 +12,12 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
-    List<Ingredient> ingredients = new ArrayList<>();
+    // List<Ingredient> ingredients = new ArrayList<>();
     Burger burger  = new Burger();
     @Mock
     Bun bun;
+    List<Ingredient> ingredients = new ArrayList<>();
+
 
     @Before
     public void setUp(){
@@ -27,7 +29,7 @@ public class BurgerTest {
     @Test
     public void setBuns() {
         burger.setBuns(bun);
-        assertNull(burger.bun.name);
+        assertEquals(burger.bun,bun);
     }
 
     @Test
@@ -44,6 +46,11 @@ public class BurgerTest {
         assertEquals(0,burger.ingredients.size());
     }
 
+    @Test
+    public void getPrice() {
+            float s = burger.getPrice();
+            assertEquals(0,2);
+    }
     @Test
     public void moveIngredient() {
         burger.addIngredient(ingredients.get(0));
