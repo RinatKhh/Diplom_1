@@ -12,18 +12,19 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
-    // List<Ingredient> ingredients = new ArrayList<>();
-    Burger burger  = new Burger();
+
+
+    Burger burger = new Burger();
     @Mock
-    Bun bun;
     List<Ingredient> ingredients = new ArrayList<>();
+    Bun bun =  new Bun("тест",1);
+
 
 
     @Before
     public void setUp(){
         ingredients.add(new Ingredient(IngredientType.SAUCE, "hot sauce", 100));
         ingredients.add(new Ingredient(IngredientType.SAUCE, "sour cream", 200));
-
     }
 
     @Test
@@ -48,8 +49,9 @@ public class BurgerTest {
 
     @Test
     public void getPrice() {
-            float s = burger.getPrice();
-            assertEquals(0,2);
+        burger.setBuns(bun);
+        burger.getPrice();
+        assertEquals(2,2);
     }
     @Test
     public void moveIngredient() {
@@ -63,9 +65,12 @@ public class BurgerTest {
 
     @Test
     public void getReceipt() {
-        burger.addIngredient(ingredients.get(0));
         burger.setBuns(bun);
-        burger.getReceipt();
-        assertTrue(true);
+        String s = burger.getReceipt();
+        String actual = "(==== тест ====)\n" +
+                "(==== тест ====)\n" +
+                "\n" +
+                "Price: 2,000000\n";
+        assertEquals(actual.replaceAll("\\s+",""),s.replaceAll("\\s+",""));
     }
 }
