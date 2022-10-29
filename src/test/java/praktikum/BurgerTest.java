@@ -14,12 +14,11 @@ import static org.junit.Assert.*;
 public class BurgerTest {
 
 
-    Burger burger = new Burger();
+
     @Mock
     List<Ingredient> ingredients = new ArrayList<>();
     Bun bun =  new Bun("тест",1);
-
-
+    Burger burger = new Burger();
 
     @Before
     public void setUp(){
@@ -30,7 +29,7 @@ public class BurgerTest {
     @Test
     public void setBuns() {
         burger.setBuns(bun);
-        assertEquals(burger.bun,bun);
+        assertEquals(bun,burger.bun);
     }
 
     @Test
@@ -50,8 +49,7 @@ public class BurgerTest {
     @Test
     public void getPrice() {
         burger.setBuns(bun);
-        burger.getPrice();
-        assertEquals(2,2);
+        assertEquals(2,burger.getPrice(),0);
     }
     @Test
     public void moveIngredient() {
